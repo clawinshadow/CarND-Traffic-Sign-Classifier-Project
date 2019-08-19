@@ -2,8 +2,6 @@
 
 ## Writeup
 
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -32,11 +30,13 @@ The goals / steps of this project are the following:
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-### Writeup / README
+### Files Submitted
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+#### 1. Submission Files
+I use the workspace for this project, the submission files listed as below:
+* __Ipython notebook with code__: _Traffic_Sign_Classifier.ipynb_ in the project directory
+* __HTML output of the code__: _code_output.html_ in the project directory
+* __A writeup report__: _writeup.md_ in the project directory
 
 ### Data Set Summary & Exploration
 
