@@ -38,18 +38,17 @@ I use the workspace for this project, the submission files listed as below:
 * __HTML output of the code__: _code_output.html_ in the project directory
 * __A writeup report__: _writeup.md_ in the project directory
 
-### Data Set Summary & Exploration
+### Dataset Exploration
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### 1. Provide a basic summary of the data set.
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+I used the numpy library to calculate summary statistics of the traffic signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+* The size of training set is `34799`
+* The size of the validation set is `4410`
+* The size of test set is `12630`
+* The shape of a traffic sign image is `32x32x3`
+* The number of unique classes/labels in the data set is `43` (apply np.unique() to y_train)
 
 #### 2. Include an exploratory visualization of the dataset.
 
