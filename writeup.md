@@ -66,15 +66,13 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 * The first step is to pre-process the original image, steps as below:
 1. Step 1: convert it to gray-scale
 
-* The original image
+   * The original image
 ![alt text][image3]
 
-* The grayscaled image
+   * The grayscaled image
 ![alt text][image4]
 
-2. Step 2: Apply histogram equlization to the grayscaled image, enhance the contrast, alleviate the impact of situations like too dark or too shining.
-
-![alt text][image5]
+2. Step 2: Apply histogram equlization to the grayscaled image, enhance the contrast, alleviate the impact of situations like too dark or too shining.![alt text][image5]
 
 * The second step is to augment the original training dataset, because the sample counts of some lables are too small for training, and it's relatively easy to augment image dataset. I use the techniques provided in the Multiscale-CNN paper by Sermanet, details as below:
 
