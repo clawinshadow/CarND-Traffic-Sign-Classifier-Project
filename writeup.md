@@ -17,12 +17,12 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
+[image1]: ./examples/dataset_bar_chart.png "barchart"
+[image2]: ./examples/dataset_samples.png "samples"
+[image3]: ./examples/sample.png "sample"
+[image4]: ./examples/sample_grayscaled.png "sample_gray"
+[image5]: ./examples/sample_equalized.png "sample_equalized"
+[image6]: ./examples/aug_sample.png "aug_sample"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
@@ -35,7 +35,7 @@ The goals / steps of this project are the following:
 #### 1. Submission Files
 I use the workspace for this project, the submission files listed as below:
 * __Ipython notebook with code__: _Traffic_Sign_Classifier.ipynb_ in the project directory
-* __HTML output of the code__: _code_output.html_ in the project directory
+* __HTML output of the code__: _Traffic_Sign_Classifier.html_ in the project directory
 * __A writeup report__: _writeup.md_ in the project directory
 
 ### Dataset Exploration
@@ -52,31 +52,137 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+* The first figure is the 3 bar-charts for training/validations/test datasets respectively, showing the samples count of each label in the dataset 
 
 ![alt text][image1]
+
+* While the second figure including 43 sample images, one sample for one label, selected from the training dataset 
+![alt text][image2]
 
 ### Design and Test a Model Architecture
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+* The first step is to pre-process the original image, steps as below:
+1. Step 1: convert it to gray-scale
 
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
+* The original image
 ![alt text][image3]
 
-The difference between the original data set and the augmented data set is the following ... 
+* The grayscaled image
+![alt text][image4]
+
+2. Step 2: Apply histogram equlization to the grayscaled image, enhance the contrast, alleviate the impact of situations like too dark or too shining.
+
+![alt text][image5]
+
+* The second step is to augment the original training dataset, because the sample counts of some lables are too small for training, and it's relatively easy to augment image dataset. I use the techniques provided in the Multiscale-CNN paper by Sermanet, details as below:
+
+1. Step 1: Translate the orignal image, horizontally or vertically, randomly in range [-2, +2] pixels
+2. Step 2: Rescale the whole image, by a ratio in the range from 0.9 to 1.1
+3. Step 3: Rotate the image, by a degree in the range from -15 to +15 
+4. Step 4: Decide how many images to augment for different label, I wish the final count of each label should be approximately in range from 2000 to 3000, logics as below:
+
+    * The count of augmentation depends on the original dataset grouped by classes
+    * If original class count > 1000, augment 1 image for every image
+    * If original class count > 500 and < 1000, augment 3 images ..
+    * If original class count < 500, augment 6 images ..
+
+Here is an example of an augmented image:
+
+![alt text][image6]
+
+I printed out a brief summay of the augmented dataset as below:
+Count of augmentation x: 73197
+
+Count of augmentation y: 73197
+
+Label: 0, Count: 1260
+
+Label: 1, Count: 3960
+
+Label: 2, Count: 4020
+
+Label: 3, Count: 2520
+
+Label: 4, Count: 3540
+
+Label: 5, Count: 3300
+
+Label: 6, Count: 2520
+
+Label: 7, Count: 2580
+
+Label: 8, Count: 2520
+
+Label: 9, Count: 2640
+
+Label: 10, Count: 3600
+
+Label: 11, Count: 2340
+
+Label: 12, Count: 3780
+
+Label: 13, Count: 3840
+
+Label: 14, Count: 2760
+
+Label: 15, Count: 2160
+
+Label: 16, Count: 2520
+
+Label: 17, Count: 3960
+
+Label: 18, Count: 2160
+
+Label: 19, Count: 1260
+
+Label: 20, Count: 2100
+
+Label: 21, Count: 1890
+
+Label: 22, Count: 2310
+
+Label: 23, Count: 3150
+
+Label: 24, Count: 1680
+
+Label: 25, Count: 2700
+
+Label: 26, Count: 2160
+
+Label: 27, Count: 1470
+
+Label: 28, Count: 3360
+
+Label: 29, Count: 1680
+
+Label: 30, Count: 2730
+
+Label: 31, Count: 2760
+
+Label: 32, Count: 1470
+
+Label: 33, Count: 2396
+
+Label: 34, Count: 2520
+
+Label: 35, Count: 2160
+
+Label: 36, Count: 2310
+
+Label: 37, Count: 1260
+
+Label: 38, Count: 3720
+
+Label: 39, Count: 1890
+
+Label: 40, Count: 2100
+
+Label: 41, Count: 1470
+
+Label: 42, Count: 1470
+
 
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
