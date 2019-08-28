@@ -24,7 +24,6 @@ The goals / steps of this project are the following:
 [image5]: ./examples/sample_equalized.png "sample_equalized"
 [image6]: ./examples/aug_sample.png "aug_sample"
 [image7]: ./examples/images_web_download.png "web images"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -74,7 +73,7 @@ I used the numpy library to calculate summary statistics of the traffic signs da
 
 2. Step 2: Apply histogram equlization to the grayscaled image, enhance the contrast, alleviate the impact of situations like too dark or too shining.![alt text][image5]
 
-I didn't normalized the images because it would surprisingly decrease the validation accuracy if I use the Lenet-5 model to train, and the numerical stability looks good during the training process, so I commentted it out.
+I didn't normalize the images because it would surprisingly decrease the validation accuracy if I use the Lenet-5 model to train, and the numerical stability looks good during the training process, so I commentted it out.
 
 * The second step is to augment the original training dataset, because the sample counts of some lables are too small for training, and it's relatively easy to augment image dataset. I use the techniques provided in the Multiscale-CNN paper by Sermanet, details as below:
 
@@ -204,8 +203,6 @@ I tried to read the Multiscale-CNN paper by Sermanet, but cannot figure out what
 | RELU					|												|
 | Dropout	      	| keep_prob = 0.5 				|
 | Fully connected	3	| 84x43 weights, outputs (43,)        									|
-| RELU					|												|
-| Dropout	      	| keep_prob = 0.5 				|
 | Softmax				| based on the final output logits (43,)     									|
 |	Cross Entropy			|	 to measure the loss											|
  
